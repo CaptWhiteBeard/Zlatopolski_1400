@@ -325,4 +325,37 @@ def STrap(O1, O2, angle):
 # 2.29.	 Треугольник задан координатами своих вершин. Найти
 # периметр и  площадь треугольника.
 
+class Point:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
 
+    def calc_dist(self, another_point):
+        if not isinstance(another_point, Point):
+            raise ValueError("Дай мне объект класса Точка")
+
+        return ((self.x - another_point.x) ** 2 + (self.y - another_point.y) ** 2) ** (1 / 2)
+
+
+class Triangle:
+
+    def __init__(self, A, B, C):  # A,B,C - это точки;  a,b,c - это стороны
+        self.A = A
+        self.B = B
+        self.C = C
+
+        self.a = Point.calc_dist(self.A, self.B)
+        self.b = Point.calc_dist(self.B, self.C)
+        self.c = Point.calc_dist(self.A, self.C)
+
+        self.s = 0
+
+    @property
+    def Perim(self):
+
+        return self.a + self.b + self.c
+
+    @property
+    def Square(self):
+        self.s = ((self.Perim / 2) * (self.Perim - self.a) * (self.Perim - self.b) * (self.Perim - self.c))**(1/2)
+        return self.s
