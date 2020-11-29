@@ -348,7 +348,6 @@ class Triangle:
         self.b = Point.calc_dist(self.B, self.C)
         self.c = Point.calc_dist(self.A, self.C)
 
-        self.s = 0
 
     @property
     def Perim(self):
@@ -356,6 +355,6 @@ class Triangle:
         return self.a + self.b + self.c
 
     @property
-    def Square(self):
-        self.s = ((self.Perim / 2) * (self.Perim - self.a) * (self.Perim - self.b) * (self.Perim - self.c))**(1/2)
-        return self.s
+    def Square(self):  # Площадь по формуле герона
+        p = self.Perim / 2
+        return (p * (p - self.a) * (p - self.b) * (p - self.c))**(1/2)
