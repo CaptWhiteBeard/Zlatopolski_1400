@@ -348,13 +348,82 @@ class Triangle:
         self.b = Point.calc_dist(self.B, self.C)
         self.c = Point.calc_dist(self.A, self.C)
 
-
     @property
     def Perim(self):
-
         return self.a + self.b + self.c
 
     @property
     def Square(self):  # Площадь по формуле герона
         p = self.Perim / 2
-        return (p * (p - self.a) * (p - self.b) * (p - self.c))**(1/2)
+        return (p * (p - self.a) * (p - self.b) * (p - self.c)) ** (1 / 2)
+
+
+# 2.30.	 Выпуклый четырехугольник задан координатами своих
+# вершин. Найти площадь этого четырехугольника как сумму площадей треугольников.
+
+class Point:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    def calc_dist(self, another_point):
+        if not isinstance(another_point, Point):
+            raise ValueError("Дай мне объект класса Точка")
+
+        return ((self.x - another_point.x) ** 2 + (self.y - another_point.y) ** 2) ** (1 / 2)
+
+
+class Triangle:
+
+    def __init__(self, A, B, C):  # A,B,C - это точки;  a,b,c - это стороны
+        self.A = A
+        self.B = B
+        self.C = C
+
+        self.a = Point.calc_dist(self.A, self.B)
+        self.b = Point.calc_dist(self.B, self.C)
+        self.c = Point.calc_dist(self.A, self.C)
+
+    @property
+    def Perim(self):
+        return self.a + self.b + self.c
+
+    @property
+    def Square(self):  # Площадь по формуле герона
+        p = self.Perim / 2
+        return (p * (p - self.a) * (p - self.b) * (p - self.c)) ** (1 / 2)
+
+
+class Quadrangle:
+    def __init__(self, A, B, C, D):  # 4 точки, задающих вершины этого четырёхугольника
+        self.A = A
+        self.B = B
+        self.C = C
+        self.D = D
+
+        self.a = Point.calc_dist(self.A, self.B)
+        self.b = Point.calc_dist(self.B, self.C)
+        self.c = Point.calc_dist(self.D, self.C)
+        self.d = Point.calc_dist(self.A, self.D)
+
+    @property
+    def Square(self):
+        A1 = Triangle(self.A, self.B, self.D)
+        A2 = Triangle(self.A, self.D, self.C)
+
+        return A1.Square + A2.Square
+
+
+# 2.31.	 Известна стоимость 1 кг конфет, печенья и яблок. Найти
+# стоимость всей покупки, если купили x кг конфет, у  кг печенья
+# и  z кг яблок.
+
+x = float(input("Стоимость конфет за 1 кг: "))
+y = float(input("Стоимость печенья за 1 кг: "))
+z = float(input("Стоимость яблок за 1 кг: "))
+
+
+def cost(nx, ny, nz):
+    return nx * x + ny * y + nz * z
+
+
