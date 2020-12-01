@@ -120,10 +120,21 @@ nedela = {1: 'понедельник',
           7: 'воскресенье'}
 
 
-def den_nedeli(k=1, d=1):
-    if k > 365 or k < 1:
-        return 'В году 365 дней, идиот'
+def den_nedely(k=1, d=1):
+    if k not in range(1, 366):
+        return 'В году 365 дней, дебил!'
+    elif d not in range(1, 8):
+        return "В неделе всего 7 дней, придурок!"
 
-    if d > 7 or d < 1:
-        return "в неделе 7 дней, дурак"
+    if d == 1:
+        if k % 7 == 0:
+            return f'Этот день недели - {nedela.get(k % 7 + 7)}'
+        else:
+            return f'Этот день недели - {nedela.get(k % 7)}'
+    elif d != 1:
+        if (k + d - 1) % 7 == 0:
+            return f'Этот день недели - {nedela.get((k + d - 1) % 7 + 7)}'
+        else:
+            return f'Этот день недели - {nedela.get((k + d - 1) % 7)}'
+
 
