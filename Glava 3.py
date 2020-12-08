@@ -398,3 +398,15 @@ def perestanovka(chislo):  # Допустим, 123
         print(100 * (chislo // 100) + 1 * (chislo // 10 % 10) + 10 * (chislo % 10))
         print(f'А шестая комбинация - это само число {chislo}')
 
+
+# 3.27.	 Написать программу, в  которой рассчитывается:
+# а) сумма цифр 4-значного числа, вводимого с  клавиатуры.
+# б) то же, 5-значного.
+
+def sum_digit(chislo):
+    if len(str(chislo)) == 4:
+        return \
+            f'Сумма цифр числа - {chislo % 10 + chislo // 1000 + chislo // 100 % 10 + chislo // 10 % 10}'
+    elif len(str(chislo)) == 5:
+        return \
+            f'Сумма цифр числа - {chislo // 10000 + chislo // 1000 % 10 + chislo // 100 % 10 + chislo // 10 % 10 + chislo % 10}'
