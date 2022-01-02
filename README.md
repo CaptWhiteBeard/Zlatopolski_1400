@@ -13,6 +13,6 @@
 Все задачи могут быть решены на любом языке программирования (Pascal, Python, С, школьном алгоритмическом языке
 и т. д.).*
 
-![Image Zlat](https://coderoll.net/uploads/posts/2020-09/1600779954_1400.jpg)
+![Image Zlat](http://sun9-47.userapi.com/impg/fDJfKMpHcZ576oHcuowgER65eyX3qOE7yIMwFA/oacSIvqu0P0.jpg?size=604x431&quality=96&sign=587884f408450f8effea5e32454754dd&type=album)
 
 В данном проекте предложенные задачи будут решаться на языке Python 3.
